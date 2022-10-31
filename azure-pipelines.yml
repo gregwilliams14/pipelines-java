@@ -10,13 +10,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
+
+- task: VaultReadKV@4
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    strUrl: 'https://hvp.akeyless.io'
+    ignoreCertificateChecks: false
+    useProxy: 'none'
+    strAuthType: 'clientToken'
+    strToken: 'p-73ho6r4mproj..3hsWPaB/jLJltrzCrAqaXbUVnfDQL9Jw/fMOgRLU3R4='
+    strKVEnginePath: 'secret/data'
+    kvVersion: 'v1'
+    strSecretPath: '/root/Murali-Testing'
+    strPrefixType: 'custom'
+    replaceCR: false
